@@ -8,7 +8,7 @@ from R import *
 from random import *
 start_time = time.time()
 
-#hi
+
 class CPP:
     I = 5000
     def main(self):
@@ -39,31 +39,24 @@ class CPP:
 
     
     def draw(self, pop):
-        #imported graphics from matplotlib, numpy and basemap
         fig=plt.figure()
         ax=fig.add_axes([0.1,0.1,0.8,0.8])
         m = Basemap(llcrnrlon=-125.,llcrnrlat=25.,urcrnrlon=-65.,urcrnrlat=52.,
                     rsphere=(6378137.00,6356752.3142),
                     resolution='l',projection='merc',
                     lat_0=40.,lon_0=-20.,lat_ts=20.)
-        #for x in range(len(pop)):
         l = pop[0]          
         for i in range(len(l.sol)):
             lat1 = l.sol[i].lat
             lon1 = l.sol[i].lon
-            #draw red dots for each city
             m.drawgreatcircle(lon1,lat1,lon1,lat1, linewidth=4, color = 'r')
-            #if iterates to the last city, draw line back to the starting city 
             if i == len(l.sol) - 1:
                 lat2 = l.sol[0].lat
                 lon2 = l.sol[0].lon
-            #else, find the coordinates of the next city
             else:
                 lat2 = l.sol[i+1].lat
                 lon2 = l.sol[i+1].lon
-            #draw the great circle from city a to city b
             m.drawgreatcircle(lon1,lat1,lon2,lat2, color = 'b')
-        #self explanatory
         m.drawcoastlines()
         m.drawstates()
         m.drawcountries()

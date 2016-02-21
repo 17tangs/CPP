@@ -45,13 +45,10 @@ class Solution:
     
     def mutate_swap(self):
         k = randint(0,len(self.sol)-2)
-        k2 = randint(0,len(self.sol)-2)
         s = self.sol[k]
         self.sol[k] = self.sol[k+1]
         self.sol[k+1] = s
-        s2 = self.sol[k2]
-        self.sol[k2] = self.sol[k2+1]
-        self.sol[k2+1] = s2        
+     
         
     def mutate_reverse(self):
         l = randint(2,25)
