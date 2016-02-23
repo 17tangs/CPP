@@ -97,9 +97,12 @@ class CPP:
                         s = s[:-2]
                     else:
                         s = s[:-1]
-                    if(s[:4] != "Name"):                                            #excluding empty lines and name of state
-                        e.append(s.split(":")[1][1:])                               #slicing string for only the name of capital and longtitude/latitude
-            CCOR.append(e)                                                       #append each small list city list for 2D array
+                    #excluding empty lines and name of state
+                    if(s[:4] != "Name"):  
+                        #slicing string for only the name of capital and longtitude/latitude
+                        e.append(s.split(":")[1][1:])
+            #append each small list city list for 2D array
+            CCOR.append(e)                                                       
         for y in range(len(CCOR)):
             dis = []
             for x in range(len(CCOR)):

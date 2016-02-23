@@ -8,7 +8,12 @@ class Solution:
         self.sol = arr
         self.dis = self.total_distance(self.sol)
         
-    def weeve(self, s):
+    def weeve(self,s):
+        sol1 = copy.deepcopy(self.sol)
+        sol2 = copy.deepcopy(s.sol)
+        
+        
+    def weeve1(self, s):
         child = []
         sol1 = copy.deepcopy(self.sol)
         sol2 = copy.deepcopy(s.sol)
