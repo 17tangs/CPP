@@ -9,7 +9,7 @@ from random import *
 start_time = time.time()
 
 #the best solution found on the internet at this time uses annealing
-#after 400,000 iterations, the creator of that found the optimal distance to be 10,618 miles
+#after 400,000 iterations, the creator of that found the optimal distance to be 10,618 miles = 17,088 km
 #http://toddwschneider.com/posts/traveling-salesman-with-simulated-annealing-r-and-shiny/
 class CPP:
     
