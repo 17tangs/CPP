@@ -14,13 +14,8 @@ start_time = time.time()
 class CPP:
     
     #number of iterations
-<<<<<<< HEAD
     I = 50
     
-=======
-    I = 5000
-
->>>>>>> origin/master
     def main(self):
         #create a population class using Population.py
         p = Population()
