@@ -8,10 +8,15 @@ from R import *
 from random import *
 start_time = time.time()
 
+#the best solution found on the internet at this time uses annealing
+#after 400,000 iterations, the creator of that found the optimal distance to be 10,618 miles
+#http://toddwschneider.com/posts/traveling-salesman-with-simulated-annealing-r-and-shiny/
 
 class CPP:
+    #number of iterations
     I = 5000
     def main(self):
+        #create a population class using Population.py
         p = Population()
         p.greedy()
         p.add_random(957)
@@ -73,8 +78,10 @@ class CPP:
     
     
     """
-    Methods that reads data.txt and writes out the lists C, CCOR, CDIS and CS.
-    Once it ran, no need to run it again.
+    Methods that read data.txt and generates the lists C, CCOR, CDIS and CS.
+    The data is exported to R.py where it can be referenced upon later.
+    Once it runs, there's no need to run it again.
+
     def shortest(self, c, l):
         m = sys.maxint
         ind = 0
