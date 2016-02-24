@@ -1,6 +1,7 @@
 from R import *
 
 class City:
+    
     def __init__(self, na = ""):
         #takes in a string and sets it equal to self.name
         self.name = na
@@ -9,6 +10,10 @@ class City:
         self.lon = float(CCOR[C.index(na)][2])
         #finds the list that ranks the other cities from closest to furthest
         self.s = CS[C.index(na)]
+  
+  
+  
+##CITY ATTRIBUTES
         
     #function that finds the distance between two cities    
     def getDist(self,c): 

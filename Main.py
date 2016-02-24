@@ -11,15 +11,19 @@ start_time = time.time()
 #the best solution found on the internet at this time uses annealing
 #after 400,000 iterations, the creator of that found the optimal distance to be 10,618 miles
 #http://toddwschneider.com/posts/traveling-salesman-with-simulated-annealing-r-and-shiny/
-
 class CPP:
+    
     #number of iterations
-    I = 5000
+    I = 50
+    
     def main(self):
         #create a population class using Population.py
         p = Population()
+        #generate the population based on the greedy algorithm
         p.greedy()
+        #generate a certain number of random solutions
         p.add_random(957)
+        #call and print the statistics of the iteration
         averages = []
         bests = []
         worsts = []
@@ -32,6 +36,11 @@ class CPP:
         self.stat(averages,bests,worsts)
         self.draw(p.pop)
         
+        
+        
+##DISPLAY
+        
+    #plots the cross-iteration trend of averages
     def stat(self, a, b, w):
         x = [i for i in range(CPP.I)]
         plt.plot(x, a)
@@ -40,9 +49,7 @@ class CPP:
         plt.axis([0,CPP.I,0,100000])
         plt.show()
         
-        
-
-    
+    #draws a map of the US and displays the solutions graphically
     def draw(self, pop):
         fig=plt.figure()
         ax=fig.add_axes([0.1,0.1,0.8,0.8])
@@ -71,17 +78,12 @@ class CPP:
     
     
     
+##RECYCLING BIN
     
-    
-    
-    
-    
-    
-    """
-    Methods that read data.txt and generates the lists C, CCOR, CDIS and CS.
-    The data is exported to R.py where it can be referenced upon later.
-    Once it runs, there's no need to run it again.
-
+        #Methods that read data.txt and generate the lists C, CCOR, CDIS and CS.
+        #The data is exported to R.py where it can be referenced upon later.
+        #Once they run, there's no need to run it again.    
+"""
     def shortest(self, c, l):
         m = sys.maxint
         ind = 0
@@ -133,7 +135,6 @@ class CPP:
         f1.write("CDIS = " + str(CDIS) +  "\n")
         f1.close()    
     
-    USELESS METHODS THAT I DON"T WANT TO DELETE
     def seed_greedy(self, l,i):
         if i == len(C) - 1:
             return
@@ -170,6 +171,10 @@ class CPP:
         return l    
     """
 
+
+
+##CALLING MAIN FUNCTION
 x = CPP()
 x.main()
+#printing the elapsed time to complete I iterations
 print("--- %s seconds ---" % (time.time() - start_time))

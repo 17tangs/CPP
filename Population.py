@@ -4,7 +4,7 @@ from random import *
 import numpy as np
 
 class Population:  
-    #makes a list of city objects
+
     CO = [City(C[i]) for i in range(len(C))]
     
     def __init__(self):
@@ -28,12 +28,12 @@ class Population:
 
 ##FUNCTIONS IN PROGRESS...
         
-    def weeve1(self):
+    def weave1(self):
         children = []
         i = 0
         k = i + len(self.pop)/2
         while(k<len(self.pop)):
-            children.append(self.pop[i].weeve(self.pop[k]))
+            children.append(self.pop[i].weave(self.pop[k]))
             i += 1 
             k = i + len(self.pop)/2
         self.pop = self.pop[:len(self.pop)/2] + children
@@ -71,7 +71,7 @@ class Population:
         
 
 
-##SOLUTION GENERATORS
+##SOLUTION GENERATION
         
     #a function that generates solutions based on the greedy algorithm,
     #which finds the closest city to the previous one
@@ -135,10 +135,7 @@ class Population:
     
     #function that displays all the statistics of the population
     def stat(self):
-        return "best: " + str(self.pop[0].dis) + "  worst: " 
-    + str(self.pop[len(self.pop)-1].dis) + "  average: " 
-    + str(self.avg()) + "  range: " + str(self.pop[len(self.pop)-1].dis - self.pop[0].dis) 
-    + "  size: " + str(len(self.pop))    
+        return "best: " + str(self.pop[0].dis) + "  worst: " + str(self.pop[len(self.pop)-1].dis) + "  average: " + str(self.avg()) + "  range: " + str(self.pop[len(self.pop)-1].dis - self.pop[0].dis) + "  size: " + str(len(self.pop))    
     
     
     

@@ -2,18 +2,24 @@ from R import *
 from City import *
 import copy
 from random import *
+
 class Solution:
+    
     CO = [City(C[i]) for i in range(len(C))]
+    
     def __init__(self, arr=[]):
         self.sol = arr
         self.dis = self.total_distance(self.sol)
         
-    def weeve(self,s):
+        
+        
+##FUNCTIONS IN PROGRESS...
+        
+    def weave(self,s):
         sol1 = copy.deepcopy(self.sol)
         sol2 = copy.deepcopy(s.sol)
         
-        
-    def weeve1(self, s):
+    def weave1(self, s):
         child = []
         sol1 = copy.deepcopy(self.sol)
         sol2 = copy.deepcopy(s.sol)
@@ -48,21 +54,30 @@ class Solution:
                     i = sol1.index(sol2[sol2.index(sol1[i])+1])+1
         return Solution(child)
     
-    def mutate_swap(self):
-        k = randint(0,len(self.sol)-2)
-        s = self.sol[k]
-        self.sol[k] = self.sol[k+1]
-        self.sol[k+1] = s
-     
-        
-    def mutate_reverse(self):
-        l = randint(2,25)
-        k = randint(0,len(self.sol)-l-1)
-        r = self.sol[k:k+l]
-        r.reverse()
-        self.sol[k:k+l] = r
-        
     
+    
+##SOLUTION GENERATION
+    
+    #uses the greedy algorith to generate a solution based on the closest cities
+    def seed_greedy(self, i):
+        #terminates the recursion when a sufficient number of solutions have been generated
+        if i == len(C) - 1:
+            self.dis = self.total_distance(self.sol)
+            return
+        else:
+            lis = [n.name for n in self.sol]
+            k = 0
+            #finds the nest closest city that isn't already in the list and appends it to the solution
+            while self.sol[i].s[k] in lis:
+                k += 1
+            self.sol.append(Solution.CO[C.index(self.sol[i].s[k])])
+            self.seed_greedy(i + 1)
+    
+    
+    
+##BREEDING SOLUTIONS
+    
+    #this function pastes the bottom half of one solution to the top of another
     def half(self, s):
         k = []
         dom = copy.deepcopy(self.sol[:(len(self.sol)/2)])
@@ -74,20 +89,32 @@ class Solution:
             res.remove(x)
         return Solution(dom+res)
     
-    def getDist(self,c1, c2): 
-        return CDIS[C.index(c1)][C.index(c2)]    
     
-    def seed_greedy(self, i):
-        if i == len(C) - 1:
-            self.dis = self.total_distance(self.sol)
-            return
-        else:
-            lis = [n.name for n in self.sol]
-            k = 0
-            while self.sol[i].s[k] in lis:
-                k += 1
-            self.sol.append(Solution.CO[C.index(self.sol[i].s[k])])
-            self.seed_greedy(i + 1)
+    
+##RANDOM MUTATIONS
+    
+    #a mutation that chooses two random cities in a solution and switches their order
+    def mutate_swap(self):
+        k = randint(0,len(self.sol)-2)
+        s = self.sol[k]
+        self.sol[k] = self.sol[k+1]
+        self.sol[k+1] = s
+     
+    #a mutation that chooses a random section of the solution and reverses its order
+    def mutate_reverse(self):
+        l = randint(2,25)
+        k = randint(0,len(self.sol)-l-1)
+        r = self.sol[k:k+l]
+        r.reverse()
+        self.sol[k:k+l] = r
+        
+
+    
+##SOLUTION ATTRIBUTES
+          
+    #retrives the distance between two cities  
+    def getDist(self,c1, c2): 
+        return CDIS[C.index(c1)][C.index(c2)]     
     
     #find the total distance traveled for a particular solution l    
     def total_distance(self, l):
