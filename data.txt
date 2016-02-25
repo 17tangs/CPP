@@ -250,7 +250,7 @@ Name: North Dakota
 
 Capital Name: Bismarck
 
-Capital Latitude: 48.813343
+Capital Latitude: 46.813343
 
 Capital Longitude: -100.779004
 

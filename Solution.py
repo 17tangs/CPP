@@ -59,41 +59,7 @@ class Solution:
         self.weave(c,p1,p2,i,n)
         
         
-    def weave1(self, s):
-        child = []
-        sol1 = copy.deepcopy(self.sol)
-        sol2 = copy.deepcopy(s.sol)
-        i = 0
-        m = len(sol1)
-        while len(child) <= m:
-            while sol1[i] in child and i < len(sol1):
-                i += 1
-            if i == len(sol1) - 1:
-                i = 0
-                child.append(sol1[i])
-            if sol2.index(sol1[i])+1 >= len(sol2):
-                i = 0
-                while sol2[i] in child:
-                    i += 1
-                if i == len(sol2)-1:
-                    i = 0
-                    child.append(sol2[i])
-                if sol1.index(sol2[0]) + 1 >= len(sol1):
-                    i = 0
-                else:
-                    i = sol1.index(sol2[0])+1
-            else:
-                while sol2[sol2.index(sol1[i])+1] in child:
-                    i += 1
-                if i == len(sol2)-1:
-                    i = 0
-                child.append(sol2[sol2.index(sol1[i])+1])
-                if sol1.index(sol2[sol2.index(sol1[i])+1])+1 >= len(sol1):
-                    i = 0
-                else: 
-                    i = sol1.index(sol2[sol2.index(sol1[i])+1])+1
-        return Solution(child)
-    
+
     
     
 ##SOLUTION GENERATION
@@ -177,4 +143,3 @@ class Solution:
 s1 = [3,14,15,9,2,6,5,8,7,13,12,18,16,1,10,19,11,20,4,17]
 s2 = [2,13,6,18,3,16,4,11,19,1,14,9,17,20,15,5,8,7,10,12]
 x = Solution([])
-print x.weave([],s1,s2,0,3)

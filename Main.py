@@ -28,12 +28,11 @@ class CPP:
         bests = []
         worsts = []
         for i in range(CPP.I):
-            averages.append(p.average)
-            bests.append(p.best)
-            worsts.append(p.worst)
+            #averages.append(p.average)
+            #bests.append(p.best)
+            #worsts.append(p.worst)
             p.half_cut()
-        print p.stat()
-        self.stat(averages,bests,worsts)
+        #self.stat(averages,bests,worsts)
         self.draw(p.pop)
         
         

@@ -10,6 +10,8 @@ class City:
         self.lon = float(CCOR[C.index(na)][2])
         #finds the list that ranks the other cities from closest to furthest
         self.s = CS[C.index(na)]
+        #wether city is in the child or not (see weave() in Solution)
+        self.b = False
   
   
   
