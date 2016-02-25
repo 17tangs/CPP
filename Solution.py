@@ -14,10 +14,50 @@ class Solution:
         
         
 ##FUNCTIONS IN PROGRESS...
+    def weeaave(self,s,n):
+        n = n-1
+        p1 = copy.deepcopy(self.sol)
+        p2 = copy.deepcopy(s.sol)
+        c = []
+        self.weave(p1,p2,0,c,n)
         
-    def weave(self,s):
-        sol1 = copy.deepcopy(self.sol)
-        sol2 = copy.deepcopy(s.sol)
+    def weave(self,c,p1,p2,i,n):
+        print p1
+        print p2
+        print c
+        temp = []
+        if len(p1) < n:
+            c.append(p1)
+            return c
+        elif i+n > len(p1):
+            temp.append(p1[i:len(p1)])
+            temp.append(p1[0:(i+n)%len(p1)])            
+            c.append(p1[i:len(p1)])
+            c.append(p1[0:(i+n)%len(p1)])            
+        else:            
+            temp.append(p1[i:i+n])
+            c.append(p1[i:i+n])
+        ct = p1[(i+n+1)%len(p1)]
+        for k in temp[0]:
+            p2.remove(k)
+        i = p2.index(ct)
+        if len(p2) < n:
+            c.append(p2)
+            return c
+        elif i+n > len(p2):
+            temp.append(p2[i:len(p2)])
+            temp.append(p2[0:(i+n)%len(p2)])            
+            c.append(p2[i:len(p2)])
+            c.append(p2[0:(i+n)%len(p2)])
+        else:
+            temp.append(p2[i:i+n])
+            c.append(p2[i:i+n])
+        ct = p2[(i+n+1)%len(p2)]
+        for k in temp[0]:
+            p1.remove(k)
+        i = p1.index(ct)
+        self.weave(c,p1,p2,i,n)
+        
         
     def weave1(self, s):
         child = []
@@ -131,3 +171,10 @@ class Solution:
     
     def __str__(self):
         return str(self.sol)
+
+
+
+s1 = [3,14,15,9,2,6,5,8,7,13,12,18,16,1,10,19,11,20,4,17]
+s2 = [2,13,6,18,3,16,4,11,19,1,14,9,17,20,15,5,8,7,10,12]
+x = Solution([])
+print x.weave([],s1,s2,0,3)
