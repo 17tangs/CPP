@@ -21,6 +21,10 @@ class Solution:
         c = []
         self.weave(p1,p2,0,c,n)
         
+        
+        
+    def weave(self,s,n):
+        
     def weave(self,c,p1,p2,i,n):
         print p1
         print p2
