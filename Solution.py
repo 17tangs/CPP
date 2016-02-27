@@ -23,9 +23,10 @@ class Solution:
         
         
         
-    def weave(self,s,n):
+    def weave(self,p1,p2,i,c,n):
+        c.append(p1[i:i+n])
         
-    def weave(self,c,p1,p2,i,n):
+    def weave(self,p1,p2,i,c,n):
         print p1
         print p2
         print c
