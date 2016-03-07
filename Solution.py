@@ -15,18 +15,54 @@ class Solution:
         
 ##FUNCTIONS IN PROGRESS...
     def weeaave(self,s,n):
-        n = n-1
         p1 = copy.deepcopy(self.sol)
         p2 = copy.deepcopy(s.sol)
-        c = []
-        self.weave(p1,p2,0,c,n)
+        ci = []
+        self.weave(p1,p2,0,ci,n)
+        child = Solution(ci)
+        return child
+    
+    def weave(self,p1,p2,i,c,n):
+        if len(c) + n >= len(p1):
+            return
+        k = 0
+        j = i
+        while j < i+n+k:
+            if p1[j%len(p1)].b == True:
+                c.append(p1[j%len(p1)])
+                p1[j%len(p1)].b = False                
+            else:
+                k += 1
+            j +=1
+        i = (p2.index(c[len(c)-1])+1)%len(p1)
+        for v in c:
+            p2[p2.index(v)].b = False
+        k = 0
+        j = i
+        while j < i+n+k:
+            if p2[j%len(p2)].b == True:
+                c.append(p2[j%len(p2)])
+                p2[j%len(p2)].b = False                
+            else:
+                k += 1    
+            j+=1
+        i = (p1.index(c[len(c)-1])+1)%len(p1)
+        for v in c:
+            p1[p1.index(v)].b = False
+        self.weave(p1,p2,i,c,n)
         
         
         
+<<<<<<< Updated upstream
     def weave(self,p1,p2,i,c,n):
         c.append(p1[i:i+n])
         
     def weave(self,p1,p2,i,c,n):
+=======
+        
+        
+    def weave111(self,c,p1,p2,i,n):
+>>>>>>> Stashed changes
         print p1
         print p2
         print c
@@ -156,3 +192,5 @@ class Solution:
 s1 = [3,14,15,9,2,6,5,8,7,13,12,18,16,1,10,19,11,20,4,17]
 s2 = [2,13,6,18,3,16,4,11,19,1,14,9,17,20,15,5,8,7,10,12]
 x = Solution([])
+c = []
+
