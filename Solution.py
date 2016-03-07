@@ -14,6 +14,7 @@ class Solution:
         
         
 ##FUNCTIONS IN PROGRESS...
+        
     def weeaave(self,s,n):
         p1 = copy.deepcopy(self.sol)
         p2 = copy.deepcopy(s.sol)
@@ -106,7 +107,7 @@ class Solution:
         self.sol[k:k+l] = r
         
     #a mutation that takes a random section of the solution and moves it to another section of the solution.
-    def shift(self):
+    def mutate_shift(self):
         l = randint(3, 6)
         s = randint(0, len(self.sol)-l-1)
         c = randint(0, len(self.sol)-l-1)

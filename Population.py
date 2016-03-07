@@ -62,6 +62,8 @@ class Population:
             #each child has a 3/10 chance of mutating
             if randint(1,10)>7:
                 child.mutate_reverse()
+            if randint(1, 10)>7:
+                child.mutate_shift()
             children.append(child)
         #adds the newly generated list of children to the population list and re-sorts
         self.pop[780:] = children
