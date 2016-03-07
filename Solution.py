@@ -52,54 +52,6 @@ class Solution:
         self.weave(p1,p2,i,c,n)
         
         
-        
-<<<<<<< Updated upstream
-    def weave(self,p1,p2,i,c,n):
-        c.append(p1[i:i+n])
-        
-    def weave(self,p1,p2,i,c,n):
-=======
-        
-        
-    def weave111(self,c,p1,p2,i,n):
->>>>>>> Stashed changes
-        print p1
-        print p2
-        print c
-        temp = []
-        if len(p1) < n:
-            c.append(p1)
-            return c
-        elif i+n > len(p1):
-            temp.append(p1[i:len(p1)])
-            temp.append(p1[0:(i+n)%len(p1)])            
-            c.append(p1[i:len(p1)])
-            c.append(p1[0:(i+n)%len(p1)])            
-        else:            
-            temp.append(p1[i:i+n])
-            c.append(p1[i:i+n])
-        ct = p1[(i+n+1)%len(p1)]
-        for k in temp[0]:
-            p2.remove(k)
-        i = p2.index(ct)
-        if len(p2) < n:
-            c.append(p2)
-            return c
-        elif i+n > len(p2):
-            temp.append(p2[i:len(p2)])
-            temp.append(p2[0:(i+n)%len(p2)])            
-            c.append(p2[i:len(p2)])
-            c.append(p2[0:(i+n)%len(p2)])
-        else:
-            temp.append(p2[i:i+n])
-            c.append(p2[i:i+n])
-        ct = p2[(i+n+1)%len(p2)]
-        for k in temp[0]:
-            p1.remove(k)
-        i = p1.index(ct)
-        self.weave(c,p1,p2,i,n)
-    
-
 
 ##SOLUTION GENERATION
     
@@ -164,8 +116,7 @@ class Solution:
             self.sol.insert(s+i, cities[i])
     
     
-    
-    
+
 ##SOLUTION ATTRIBUTES
           
     #retrives the distance between two cities  
