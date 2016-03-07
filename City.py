@@ -12,9 +12,8 @@ class City:
         self.s = CS[C.index(na)]
         #wether city is in the child or not (see weave() in Solution)
         self.b = False
-  
-  
-  
+
+
 ##CITY ATTRIBUTES
         
     #function that finds the distance between two cities    
