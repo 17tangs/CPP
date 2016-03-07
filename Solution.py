@@ -62,11 +62,9 @@ class Solution:
             p1.remove(k)
         i = p1.index(ct)
         self.weave(c,p1,p2,i,n)
-        
-        
+    
 
-    
-    
+
 ##SOLUTION GENERATION
     
     #uses the greedy algorith to generate a solution based on the closest cities
@@ -119,7 +117,17 @@ class Solution:
         r.reverse()
         self.sol[k:k+l] = r
         
-
+    #a mutation that takes a random section of the solution and moves it to another section of the solution.
+    def shift(self):
+        l = randint(3, 6)
+        s = randint(0, len(self.sol)-l-1)
+        c = randint(0, len(self.sol)-l-1)
+        cities = self.sol[c:c+l]
+        del self.sol[c:c+l]
+        for i in range(0, l):
+            self.sol.insert(s+i, cities[i])
+    
+    
     
 ##SOLUTION ATTRIBUTES
           
