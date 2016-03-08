@@ -14,7 +14,7 @@ start_time = time.time()
 class CPP:
     
     #number of iterations
-    I = 1000
+    I = 1
     
     def main(self):
         #create a population class using Population.py
@@ -27,13 +27,15 @@ class CPP:
         averages = []
         bests = []
         worsts = []
-        for i in range(CPP.I):
-            averages.append(p.average)
-            bests.append(p.best)
-            worsts.append(p.worst)
-            p.half_cut()
-        self.stat(averages,bests,worsts)
-        self.draw(p.pop)
+        p.half_cut()
+        print "done"
+        #for i in range(CPP.I):
+            #averages.append(p.average)
+            #bests.append(p.best)
+            #worsts.append(p.worst)
+            #p.half_cut()
+        #self.stat(averages,bests,worsts)
+        #self.draw(p.pop)
         
         
         

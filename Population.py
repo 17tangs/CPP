@@ -57,19 +57,21 @@ class Population:
         parent1 = np.random.choice(self.pop[:780], 400, True, prob)
         parent2 = np.random.choice(self.pop[:780], 400, True, prob)
         children = []
-        for i in range(len(parent1)):
-            child = parent1[i].half(parent2[i])
-            #each child has a 3/10 chance of mutating
-            if randint(1,10)>7:
-                child.mutate_reverse()
-            if randint(1, 10)>7:
-                child.mutate_shift()
-            children.append(child)
+        child = self.pop[0].weeaave(self.pop[0],4)
+        print child
+        #for i in range(len(parent1)):
+            #child = parent1[i].weeaave(parent2[i],4)
+            ##each child has a 3/10 chance of mutating
+            #if randint(1,10)>7:
+                #child.mutate_reverse()
+            #if randint(1, 10)>7:
+                #child.mutate_shift()
+            #children.append(child)
         #adds the newly generated list of children to the population list and re-sorts
-        self.pop[780:] = children
-        self.pop.sort(key = lambda l:l.dis)
-        self.rm_dup()
-        self.update()
+        #self.pop[780:] = children
+        #self.pop.sort(key = lambda l:l.dis)
+        #self.rm_dup()
+        #self.update()
         
 
 

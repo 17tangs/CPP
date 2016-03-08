@@ -18,9 +18,10 @@ class Solution:
     def weeaave(self,s,n):
         p1 = copy.deepcopy(self.sol)
         p2 = copy.deepcopy(s.sol)
-        ci = []
+        ci = []        
         self.weave(p1,p2,0,ci,n)
         child = Solution(ci)
+        print child
         return child
     
     def weave(self,p1,p2,i,c,n):
