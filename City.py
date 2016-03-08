@@ -11,7 +11,7 @@ class City:
         #finds the list that ranks the other cities from closest to furthest
         self.s = CS[C.index(na)]
         #wether city is in the child or not (see weave() in Solution)
-        self.b = False
+        self.b = True
 
 
 ##CITY ATTRIBUTES

@@ -20,8 +20,9 @@ class Solution:
         p2 = copy.deepcopy(s.sol)
         ci = []        
         self.weave(p1,p2,0,ci,n)
+        for i in ci:
+            i.b = True
         child = Solution(ci)
-        print child
         return child
     
     def weave(self,p1,p2,i,c,n):
