@@ -20,7 +20,7 @@ class CPP:
         #create a population class using Population.py
         p = Population()
         #generate the population based on the greedy algorithm
-        p.greedy()
+        p.psuedogreedy(2)
         #generate a certain number of random solutions
         p.add_random(957)
         #call and print the statistics of the iteration

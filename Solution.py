@@ -15,6 +15,24 @@ class Solution:
         
 ##FUNCTIONS IN PROGRESS...
         
+    #uses the greedy algorith to generate a solution based on the closest cities
+    def seed_psuedogreedy(self, i, r):
+        #terminates the recursion when a sufficient number of solutions have been generated
+        if i == len(C) - 1:
+            self.dis = self.total_distance(self.sol)
+            return
+        else:
+            lis = [n.name for n in self.sol]
+            k = 0
+            #finds the next closest city that isn't already in the list and appends it to the solution
+            for j in range (0, r-2):
+                while self.sol[i].s[k] in lis:
+                    k += 1
+                while self.sol[i].s[k+1] in lis:
+                    k += 1              
+            self.sol.append(Solution.CO[C.index(self.sol[i].s[k])])
+            self.seed_greedy(i + 1)     
+            
     def weeaave(self,s,n):
         p1 = copy.deepcopy(self.sol)
         p2 = copy.deepcopy(s.sol)
@@ -67,7 +85,7 @@ class Solution:
         else:
             lis = [n.name for n in self.sol]
             k = 0
-            #finds the nest closest city that isn't already in the list and appends it to the solution
+            #finds the next closest city that isn't already in the list and appends it to the solution
             while self.sol[i].s[k] in lis:
                 k += 1
             self.sol.append(Solution.CO[C.index(self.sol[i].s[k])])

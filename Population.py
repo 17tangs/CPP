@@ -26,11 +26,21 @@ class Population:
         self.worst = self.pop[self.size-1].dis
         self.average = self.avg()
         self.rang = self.worst-self.best
-        
+            
    
 
 ##FUNCTIONS IN PROGRESS...
         
+    def psuedogreedy(self, r):
+        for i in range(len(C)):
+            l = Solution([Population.CO[i]])
+            l.seed_psuedogreedy(0, r)
+            self.pop.append(l)
+        self.pop.sort(key = lambda l : l.dis)        
+        self.rm_dup() 
+        for j in range(len(self.pop)):
+            print self.pop[j]
+    
     def weave1(self):
         children = []
         i = 0
@@ -61,8 +71,11 @@ class Population:
         parent2 = np.random.choice(self.pop[:780], 400, True, prob)
         children = []
         for i in range(len(parent1)):
-            child = parent1[i].half(parent2[i])
-            #child = parent1[i].weeaave(parent2[i],4)
+            n = randint(1, 10)
+            if n>4:
+                child = parent1[i].half(parent2[i])
+            else:
+                child = parent1[i].weeaave(parent2[i],4)
             #each child has a 3/10 chance of mutating
             if randint(1,10)>7:
                 child.mutate_reverse()
@@ -88,7 +101,7 @@ class Population:
             self.pop.append(l)
         self.pop.sort(key = lambda l : l.dis)        
         self.rm_dup()
-        
+             
     #generates n lists of random solutions
     def add_random(self, n):
         for i in range(n):
