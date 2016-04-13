@@ -40,7 +40,15 @@ class Population:
         self.rm_dup() 
         for j in range(len(self.pop)):
             print self.pop[j]
-    
+            
+    def greedy(self,r):
+        for i in range(len(C)):
+            l = Solution([Population.CO[i]])
+            l.seed_greedy(0,r)
+            self.pop.append(l)
+        self.pop.sort(key = lambda l : l.dis)        
+        self.rm_dup()    
+        
     def weave1(self):
         children = []
         i = 0
@@ -64,22 +72,22 @@ class Population:
 
     #a breeding mechanism that "randomly" chooses two parents and
     #generates a child by combining the top and bottom halves
-    def half_cut(self):
+    def breed(self,q):
         prob = self.exp()
         prob[0] -= 0.00000128292
         parent1 = np.random.choice(self.pop[:780], 400, True, prob)
         parent2 = np.random.choice(self.pop[:780], 400, True, prob)
         children = []
         for i in range(len(parent1)):
-            n = randint(1, 10)
-            if n>4:
-                child = parent1[i].half(parent2[i])
-            else:
-                child = parent1[i].weeaave(parent2[i],4)
+            #n = randint(1, 10)
+            #if n>3:
+            child = parent1[i].half(parent2[i])
+            #else:
+                #child = parent1[i].weeaave(parent2[i],q)
             #each child has a 3/10 chance of mutating
             if randint(1,10)>7:
                 child.mutate_reverse()
-            if randint(1, 10)>8:
+            if randint(1, 10)>7:
                 child.mutate_shift()
             children.append(child)
         #adds the newly generated list of children to the population list and re-sorts
@@ -94,13 +102,7 @@ class Population:
         
     #a function that generates solutions based on the greedy algorithm,
     #which finds the closest city to the previous one
-    def greedy(self):
-        for i in range(len(C)):
-            l = Solution([Population.CO[i]])
-            l.seed_greedy(0)
-            self.pop.append(l)
-        self.pop.sort(key = lambda l : l.dis)        
-        self.rm_dup()
+
              
     #generates n lists of random solutions
     def add_random(self, n):

@@ -12,41 +12,73 @@ start_time = time.time()
 #after 400,000 iterations, the creator of that found the optimal distance to be 10,618 miles = 17,088 km
 #http://toddwschneider.com/posts/traveling-salesman-with-simulated-annealing-r-and-shiny/
 class CPP:
+    #probabilities of weave methods
+    wp1 = 0.5
+    wp2 = 1-wp1
+    #size of two weave functions
+    ws1 = 24
+    ws2 = 8
+    #probabilities of mutations
+    rp = 0.3 #reverse
+    sp = 0.2 #shift
+    #different greedy alg
+    greedy = 10 
     
     #number of iterations
-    I = 500
+    I = 5000
     
     def main(self):
-        #create a population class using Population.py
-        p = Population()
-        #generate the population based on the greedy algorithm
-        p.psuedogreedy(2)
-        #generate a certain number of random solutions
-        p.add_random(957)
-        #call and print the statistics of the iteration
-        averages = []
-        bests = []
-        worsts = []
-        for i in range(CPP.I):
-            averages.append(p.average)
-            bests.append(p.best)
-            worsts.append(p.worst)
-            p.half_cut()
-        print p.stat()
-        self.stat(averages,bests,worsts)
-        self.draw(p.pop)
+        ##create a population class using Population.py
+        #p = Population()
+        ##generate the population based on the greedy algorithm
+ ##       p.greedy(0)
+        #for i in range(10):
+            #p.greedy(i)
+        ##generate a certain number of random solutions
+        #p.add_random(950)
+        ##call and print the statistics of the iteration
+        #averages = []
+        #bests = []
+        #worsts = []
+        #for i in range(CPP.I):
+            #averages.append(p.average)
+            #bests.append(p.best)
+            ##worsts.append(p.worst)
+            #p.breed(1)#wp1, wp2, ws1, ws2, rp, sp)
+        size = [2,4,6,8,12,24]
+        A = []
+        B = []
+        for j in range(1):
+            p1 = Population()
+            for i in range(10):
+                p1.greedy(i)
+            p1.add_random(950)
+            a1 = []
+            b1 = []
+            for i in range(CPP.I):
+                a1.append(p1.average)
+                b1.append(p1.best)
+                p1.breed(size[j])
+            A.append(a1)
+            B.append(b1)
+            print p1.stat()
+            self.stat(A,B,size)
+            self.draw(p.pop)
         
         
         
 ##DISPLAY
         
     #plots the cross-iteration trend of averages
-    def stat(self, a, b, w):
+    def stat(self, A, B, size):
         x = [i for i in range(CPP.I)]
-        plt.plot(x, a)
-        plt.plot(x, b)
-        plt.plot(x, w)
+        c = ["b","g","r","c","m","y","k","w"]
+        l = []
+        for i in range(len(A)):
+            l1, = plt.plot(x, A[i], color = c[i], label = str(size[i]))
+            l.append(l1,)
         plt.axis([0,CPP.I,0,100000])
+        plt.legend(handles=l)
         plt.show()
         
     #draws a map of the US and displays the solutions graphically

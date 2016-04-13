@@ -25,7 +25,7 @@ class City:
     
     #allows objects to be printed as strings
     def __str__(self):
-        return self.name
+        return self.name[:6]
     
     #makes objects comparable to one another
     def __eq__(self, other):

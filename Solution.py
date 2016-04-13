@@ -37,13 +37,13 @@ class Solution:
         p1 = copy.deepcopy(self.sol)
         p2 = copy.deepcopy(s.sol)
         ci = []        
-        self.weave(p1,p2,0,ci,n)
+        self.weave(p1,p2,0,ci,n,0)
         for i in ci:
             i.b = True
         child = Solution(ci)
         return child
     
-    def weave(self,p1,p2,i,c,n):
+    def weave(self,p1,p2,i,c,n, k):
         if len(c) + n >= len(p1):
             return
         k = 0
@@ -69,15 +69,15 @@ class Solution:
             j+=1
         i = (p1.index(c[len(c)-1])+1)%len(p1)
         for v in c:
-            p1[p1.index(v)].b = False
-        self.weave(p1,p2,i,c,n)
+            p1[p1.index(v)].b = False     
+        self.weave(p1,p2,i,c,n,k)
         
         
 
 ##SOLUTION GENERATION
     
     #uses the greedy algorith to generate a solution based on the closest cities
-    def seed_greedy(self, i):
+    def seed_greedy(self, i, r):
         #terminates the recursion when a sufficient number of solutions have been generated
         if i == len(C) - 1:
             self.dis = self.total_distance(self.sol)
@@ -86,10 +86,10 @@ class Solution:
             lis = [n.name for n in self.sol]
             k = 0
             #finds the next closest city that isn't already in the list and appends it to the solution
-            while self.sol[i].s[k] in lis:
+            while self.sol[i].s[(k+r)%len(self.sol[i].s)] in lis:
                 k += 1
-            self.sol.append(Solution.CO[C.index(self.sol[i].s[k])])
-            self.seed_greedy(i + 1)
+            self.sol.append(Solution.CO[C.index(self.sol[i].s[(k+r)%len(self.sol[i].s)])])
+            self.seed_greedy(i + 1,r)
     
     
     
